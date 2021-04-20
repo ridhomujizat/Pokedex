@@ -10,7 +10,7 @@
 ### How to Install
  1. Make sure you had clone this repo 
     ```
-    git clone https://github.com/ridhomujizat/abusayap-frontend.git
+    git clone https://github.com/ridhomujizat/Pokedex.git
     ```
  2. Copy environment from `.env.example` to `.env`
  3. Configure your `.env`
