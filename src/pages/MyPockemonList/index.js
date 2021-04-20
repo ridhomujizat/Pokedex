@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './index.css'
 import PokeLogo from '../../assets/images/pokelogo.png'
 import Pocket from '../../assets/images/filter.png'
+import back from '../../assets/images/backBlack.png'
 
 import CardPokemon from '../../component/CardPokemon'
 
@@ -11,35 +12,27 @@ import { getlist } from '../../redux/action/getPokemon'
 
 class PokemonList extends Component {
   componentDidMount () {
-    const { fristFetch } = this.props.pokemon
-    if (fristFetch) {
-      this.props.getlist()
-    }
+    console.log(this.props.myPokemon)
   }
-
-  nextData () {
-    const { next } = this.props.pokemon.pokemonList
-    this.props.getlist(next)
-  }
-
   goDetail (name) {
     this.props.history.push(`/detail/${name}`)
   }
 
   render () {
-    const pokemonList = this.props.pokemon.pokemonList.results
-    const { next } = this.props.pokemon.pokemonList
+    const { myListPokemon } = this.props.myPokemon
     return (
       <>
         <section id="PokemontList">
           <div className="container">
             <div className="heading">
+              <img src={back} alt="back icon" onClick={() => this.props.history.goBack()} className="back" />
               <h1 className="title">
-                Pokedox
+                My List Pokemon
               </h1>
             </div>
             <div className="list-pokemon">
-              {pokemonList.map(item => {
+              {myListPokemon.length === 0 && <p>Get your pokemon</p>}
+              {myListPokemon.map(item => {
                 return (
                   <CardPokemon
                     onClick={() => this.goDetail(item.name)}
@@ -52,13 +45,8 @@ class PokemonList extends Component {
                 )
               })}
             </div>
-            {next && (
-              <div className="btn-load-more" onClick={() => this.nextData()}>
-                <p>load more</p>
-              </div>
-            )}
           </div>
-          <div className="btn-mylist" onClick={() => this.props.history.push(`/my-pokemon`)}>
+          <div className="btn-mylist">
             <img src={Pocket} alt="pocket logo" className="img-btn-mylist" />
           </div>
         </section>
@@ -69,7 +57,7 @@ class PokemonList extends Component {
 }
 
 const mapStateToProps = state => ({
-  pokemon: state.pokemon
+  myPokemon: state.myPokemon
 })
 
 const mapDispatchToProps = { getlist }

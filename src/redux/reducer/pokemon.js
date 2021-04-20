@@ -1,4 +1,5 @@
 const initalState = {
+  fristFetch: true,
   pokemonList: {
     results: [],
     count: 0,
@@ -36,7 +37,8 @@ const pokemonReducer = (state = initalState, action) => {
           count: action.payload.count,
           next: action.payload.next,
           previous: action.payload.previous
-        }
+        },
+        fristFetch: false
       }
     }
     case 'GET_DETAIL_POKEMON': {

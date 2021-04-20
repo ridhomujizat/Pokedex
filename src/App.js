@@ -7,6 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import PokemonList from './pages/PokemonList'
 import Detail from './pages/PokemonDetail'
+import MyPockemonList from './pages/MyPockemonList'
 
 function App () {
   const { store, persistor } = persistedStore()
@@ -17,6 +18,7 @@ function App () {
           <Router>
             <Switch>
               <Route exact path="/" component={PokemonList} />
+              <Route exact path="/my-pokemon" component={MyPockemonList} />
               <Route exact path="/detail/:name" component={Detail} />
             </Switch>
           </Router>

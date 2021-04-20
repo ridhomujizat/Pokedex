@@ -1,0 +1,29 @@
+.base-state {
+  display: flex;
+  flex-direction: row;
+}
+
+.tabel {
+  width: 100%;
+}
+
+.sub {
+  width: 20%;
+  padding: 0;
+  padding-right: 30px;
+  font-size: 15px;
+  color: #949494;
+  font-weight: 200;
+  margin: 0;
+  text-align: start;
+}
+
+.bar-warraper {
+  width: 100%;
+}
+
+.bar {
+  margin: 15px 0px;
+  min-height: 10px;
+  background-color: #c4c4c4;
+}

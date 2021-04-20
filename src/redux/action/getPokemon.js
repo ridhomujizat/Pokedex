@@ -64,3 +64,39 @@ export const getDetail = (url) => {
     }
   }
 }
+
+export const addMyPokemon = (data) => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: 'ADD_LIST_MYPOKEMON',
+        payload: [data]
+      })
+
+    } catch (err) {
+      console.log(err)
+      dispatch({
+        type: 'SET_MESSAGE',
+        payload: 'Cant add data'
+      })
+    }
+  }
+}
+
+export const remove = (data) => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: 'REMOVE_MYPOKEMON',
+        payload: data
+      })
+
+    } catch (err) {
+      console.log(err)
+      dispatch({
+        type: 'SET_MESSAGE',
+        payload: 'Cant add data'
+      })
+    }
+  }
+}

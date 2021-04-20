@@ -1,33 +1,34 @@
 const initalState = {
-  myListPokemon: {
-    results: [],
-    count: 0,
-    next: null,
-    previous: null
-  },
-
+  myListPokemon: [],
+  listPokemonId: [],
   pokemonDetail: null,
   message: null
 }
 
 const pokemonReducer = (state = initalState, action) => {
   switch (action.type) {
-    case 'GET_LIST_MYPOKEMON': {
+    case 'ADD_LIST_MYPOKEMON': {
+      const results = [...state.myListPokemon, ...action.payload]
+      const listPokemonId = [...state.listPokemonId, action.payload[0].id]
       return {
         ...state,
-        myListPokemon: action.payload
+        myListPokemon: results,
+        listPokemonId
       }
     }
-    case 'ADD_LIST_MYPOKEMON': {
-      const results = [...state.pokemonList.results, ...action.payload.results]
+    case 'REMOVE_MYPOKEMON': {
+      const index = state.myListPokemon.findIndex((element) => element.id === action.payload.id)
+      if (index >= 0) {
+        state.myListPokemon.splice(index, 1);
+      }
+      const indexId = state.myListPokemon.findIndex((element) => element === action.payload.id)
+      if (index >= 0) {
+        state.listPokemonId.splice(indexId, 1);
+      }
+      console.log(index, action.payload)
+      console.log(state.myListPokemon)
       return {
-        ...state,
-        myListPokemon: {
-          results: results,
-          count: action.payload.count,
-          next: action.payload.next,
-          previous: action.payload.previous
-        }
+        ...state
       }
     }
     case 'CLEAR_DATA_MYPOKEMON': {
