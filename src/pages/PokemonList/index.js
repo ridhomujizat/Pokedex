@@ -18,6 +18,10 @@ class PokemonList extends Component {
     this.props.getlist(next)
   }
 
+  goDetail (name) {
+    this.props.history.push(`/detail/${name}`)
+  }
+
   render () {
     const pokemonList = this.props.pokemon.pokemonList.results
     const { next } = this.props.pokemon.pokemonList
@@ -34,6 +38,7 @@ class PokemonList extends Component {
               {pokemonList.map(item => {
                 return (
                   <CardPokemon
+                    onClick={() => this.goDetail(item.name)}
                     key={String(item.id)}
                     id={item.id}
                     image={item.sprites.other.dream_world.front_default}

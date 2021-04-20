@@ -8,7 +8,7 @@ import color from '../../helper/color'
 export default function CardPokemon (props) {
 
   return (
-    <div className="card-pokemon" style={{ backgroundColor: color(props.types) }}>
+    <div className="card-pokemon" style={{ backgroundColor: color(props.types) }} onClick={props.onClick}>
       <p className="id-pokemon">#{props.id}</p>
       <h3 className="name-pokemon-card">
         {props.name}
@@ -16,7 +16,7 @@ export default function CardPokemon (props) {
       {props.types.map((item, index) => {
         return (
           <div className="wrapper-type" key={String(index)}>
-            <p className="type">{item}</p>
+            <p >{item}</p>
           </div>
         )
       })}
@@ -30,5 +30,6 @@ CardPokemon.propTypes = {
   name: propTypes.string,
   image: propTypes.string,
   types: propTypes.array,
-  id: propTypes.number
+  id: propTypes.number,
+  onClick: propTypes.func
 }

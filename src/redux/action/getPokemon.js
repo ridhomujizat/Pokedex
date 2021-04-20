@@ -39,7 +39,24 @@ export const getlist = (url) => {
         })
       }
     } catch (err) {
-      console.log(err)
+      dispatch({
+        type: 'SET_MESSAGE',
+        payload: 'Cant connect to server'
+      })
+    }
+  }
+}
+
+export const getDetail = (url) => {
+  return async dispatch => {
+    try {
+      const response = await http().get(url)
+      dispatch({
+        type: 'GET_DETAIL_POKEMON',
+        payload: response.data
+      })
+
+    } catch {
       dispatch({
         type: 'SET_MESSAGE',
         payload: 'Cant connect to server'

@@ -9,6 +9,10 @@ const color = (types) => {
     return '#FFCE4B'
   } else if (types.includes('bug')) {
     return '#6BD048'
+  } else if (types.includes('poison')) {
+    return '#858AFF'
+  } else if (types.includes('fairy')) {
+    return '#FAA4EC'
   } else {
     return '#C4C4C4'
   }

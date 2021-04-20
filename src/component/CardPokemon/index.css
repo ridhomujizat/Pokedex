@@ -2,11 +2,21 @@
   display: block;
   position: relative;
   overflow: hidden;
-  height: 95px;
-  min-width: 130px;
+  height: 100px;
+  min-width: 135px;
   border-radius: 15px;
-  margin: 5px;
+  margin: 10px;
   padding: 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 375px) {
+  .card-pokemon {
+    height: 97px;
+    min-width: 132px;
+    margin: 5px;
+
+  }
 }
 
 .id-pokemon {

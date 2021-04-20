@@ -1,37 +1,28 @@
 const initalState = {
-  pokemonList: {
+  myListPokemon: {
     results: [],
     count: 0,
     next: null,
     previous: null
   },
-  detail: {
-    name: null,
-    types: [],
-    sprites: {
-      other: {
-        dream_world: {
-          front_default: 'none'
-        }
-      }
-    }
-  },
+
+  pokemonDetail: null,
   message: null
 }
 
 const pokemonReducer = (state = initalState, action) => {
   switch (action.type) {
-    case 'GET_LIST_POKEMON': {
+    case 'GET_LIST_MYPOKEMON': {
       return {
         ...state,
-        pokemonList: action.payload
+        myListPokemon: action.payload
       }
     }
-    case 'ADD_LIST_POKEMON': {
+    case 'ADD_LIST_MYPOKEMON': {
       const results = [...state.pokemonList.results, ...action.payload.results]
       return {
         ...state,
-        pokemonList: {
+        myListPokemon: {
           results: results,
           count: action.payload.count,
           next: action.payload.next,
@@ -39,19 +30,7 @@ const pokemonReducer = (state = initalState, action) => {
         }
       }
     }
-    case 'GET_DETAIL_POKEMON': {
-      return {
-        ...state,
-        detail: action.payload
-      }
-    }
-    case 'SET_MESSAGE': {
-      return {
-        ...state,
-        message: action.payload
-      }
-    }
-    case 'CLEAR_DATA': {
+    case 'CLEAR_DATA_MYPOKEMON': {
       return {
         pokemonList: [],
         myListPokemon: [],
